@@ -1,0 +1,31 @@
+version: '1'
+image_name: remote-captum
+apis:
+- explanation
+- telemetry
+providers:
+  explanation:
+  - provider_id: captum-explanation
+    provider_type: remote::captum
+    config:
+      llms: ${env.VLLM_URL}
+      tokenizers: ${env.TOKENIZER}
+  telemetry:
+  - provider_id: meta-reference
+    provider_type: inline::meta-reference
+    config:
+      service_name: "${env.OTEL_SERVICE_NAME:\u200B}"
+      sinks: ${env.TELEMETRY_SINKS:console,sqlite}
+      sqlite_db_path: ${env.SQLITE_DB_PATH:~/.llama/distributions/remote-captum/trace_store.db}
+metadata_store:
+  type: sqlite
+  db_path: ${env.SQLITE_STORE_DIR:~/.llama/distributions/remote-captum}/registry.db
+models: []
+shields: []
+vector_dbs: []
+datasets: []
+scoring_fns: []
+benchmarks: []
+tool_groups: []
+server:
+  port: 8321
