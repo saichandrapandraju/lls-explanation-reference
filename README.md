@@ -59,6 +59,7 @@ Llama Stack's Explanation API enables users to generate token-level and sequence
       --env VLLM_URL=<vLLM-endpoint-1/v1>,<vLLM-endpoint-2/v1>
       --env TOKENIZER=<tokenizer-1>,<tokenizer-2>
       ```
+You can now access the Llama Stack server at http://localhost:8321/v1/
 
 ## API Endpoints
 
