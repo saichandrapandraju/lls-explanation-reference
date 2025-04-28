@@ -13,7 +13,6 @@ This repository hosts the tutorial for `explanation` API to generate explanation
   - [Online Explanation](#2-online-explanation)
   - [Batch Explanation](#3-batch-explanation)
   - [Job Management](#4-job-management)
-- [Request & Response Examples](#request--response-examples)
 - [How It Works](#how-it-works)
 - [References](#references)
 
