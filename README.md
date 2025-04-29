@@ -221,8 +221,8 @@ One issue with Captum is that it requires the LLM to be loaded locally and needs
 
 ## References
 
+- [Llama Stack](https://github.com/meta-llama/llama-stack)
 - [Captum LLM Attribution Paper](https://arxiv.org/abs/2312.05491)
 - [Captum LLM Attribution Tutorial](https://captum.ai/tutorials/Llama2_LLM_Attribution)
 - [Captum PR: Remote logprobs](https://github.com/pytorch/captum/pull/1544)
 - [vLLM Documentation](https://docs.vllm.ai/)
-- [HuggingFace Tokenizers](https://huggingface.co/models)
