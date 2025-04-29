@@ -113,6 +113,40 @@ You can now access the Llama Stack server at http://localhost:8321/v1/
   "metadata": {"model_id": "opt", "tokenizer": "facebook/opt-125m"}
 }
 ```
+#### Templates to capture words/phrases
+Captum supports defining certain words or phrases that we're interested in rather than token-level explanations. You can find more about them [here](https://captum.ai/tutorials/Llama2_LLM_Attribution). The current LLS implementation also supports these templates. Below are couple of examples - 
+```json
+{
+  "model_id": "opt",
+  "content": {
+           "template": "{} lives in {}, {} and is a {}. {} personal interests include", 
+           "values": ["Dave", "Palm Coast", "FL", "lawyer", "His"],
+           "baselines": ["Sarah", "Seattle", "WA", "doctor", "Her"]
+       },
+  "algorithm": "fa",  // One of: fa, shap, shap_sampling, lime, kernel_shap
+  "target": "playing golf, hiking, and cooking.", // Optional
+}
+```
+Here's a more interesting one - 
+```json
+{
+  "model_id": "opt",
+  "content": {
+          "template": "{name} lives in {city}, {state} and is a {occupation}. {pronoun} personal interests include",
+          "values": {"name": "Dave", "city": "Palm Coast", "state": "FL", "occupation": "lawyer", "pronoun": "His"}, 
+          "baselines": {
+            "k1":[["name", "pronoun"], [["Sarah", "her"], ["John", "His"], ["Martin", "His"], ["Rachel", "Her"]]],
+            "k2": [["city", "state"], [["Seattle", "WA"], ["Boston", "MA"]]],
+            "k3": ["occupation", ["doctor", "engineer", "teacher", "technician", "plumber"]]
+        },
+          "mask": {"name": 0, "city": 1, "state": 1, "occupation": 2, "pronoun": 0}
+}, 
+  "algorithm": "fa",  // One of: fa, shap, shap_sampling, lime, kernel_shap
+  "target": "playing golf, hiking, and cooking.", // Optional
+}
+```
+
+
 
 ### 3. Batch Explanation
 
